@@ -144,58 +144,57 @@ class AESCipher:
         return unpad(self.cipher.decrypt(raw[AES.block_size:]), AES.block_size)
     
 
-# print("<------------------------------------------------------------------------------------------>")
-# print("<----------------------------- Program Steganografi Kelompok 3 ---------------------------->")
-# print("<----------------------------------------- Oleh : ----------------------------------------->")
-# print("<----------------------------- Fitra Hutomo dan Sekar Mutiara ----------------------------->")
-# print("<------------------------------------------------------------------------------------------> \n")
+print("<------------------------------------------------------------------------------------------>")
+print("<----------------------------- Program Steganografi Kelompok 3 ---------------------------->")
+print("<---------------------------------------- Metode DCT -------------------------------------->")
+print("<------------------------------------------------------------------------------------------> \n")
 
-# while True:
+while True:
     
-#     m = input("Silahkan Pilih menu berikut : \n 1. Encode Image \n 2. Decode Image \n Tekan Enter untuk keluar dari program \n Pilihan : ")
+    m = input("Silahkan Pilih menu berikut : \n 1. Encode Image \n 2. Decode Image \n Tekan Enter untuk keluar dari program \n Pilihan : ")
 
-#     if m == "1":
+    if m == "1":
       
-#         COVER_PATH = input("Masukkan Gambar (Ex : lenna.png) : ")
-#         OUTPUT_PATH = input("Masukkan Nama Gambar Hasil Pemrosesan (Ex : hasil.png) : ")
-#         msg = input('Masukkan Pesan : ')
-#         pwd = input('Masukkan Kunci : ')
-#         secret_message = AESCipher(pwd).encrypt(msg).decode('utf-8')
-#         print('Ciphertext :' + secret_message )
-#         hasil = hashlib.sha256(msg.encode())
-        # print("Nilai Hash Pesan : ",hasil.hexdigest())
+        COVER_PATH = input("Masukkan Gambar (Ex : lenna.png) : ")
+        OUTPUT_PATH = input("Masukkan Nama Gambar Hasil Pemrosesan (Ex : hasil.png) : ")
+        msg = input('Masukkan Pesan : ')
+        pwd = input('Masukkan Kunci : ')
+        secret_message = AESCipher(pwd).encrypt(msg).decode('utf-8')
+        print('Ciphertext :' + secret_message )
+        hasil = hashlib.sha256(msg.encode())
+        print("Nilai Hash Pesan : ",hasil.hexdigest())
 
-#         DCT().encoding(COVER_PATH , OUTPUT_PATH , secret_message)
+        DCT().encoding(COVER_PATH , OUTPUT_PATH , secret_message)
 
-#         # Menghitung nilai MSE dan PSNR
-#         original = cv2.imread(COVER_PATH)
-#         dctEncoded = cv2.imread(OUTPUT_PATH)
-#         original = cv2.cvtColor(original, cv2.COLOR_BGR2RGB)
-#         dct_encoded_img = cv2.cvtColor(dctEncoded, cv2.COLOR_BGR2RGB)
-#         MSE = Compare().MSE(original, dct_encoded_img)
-#         print(f"Nilai MSE :  {MSE} ")
+        # Menghitung nilai MSE dan PSNR
+        original = cv2.imread(COVER_PATH)
+        dctEncoded = cv2.imread(OUTPUT_PATH)
+        original = cv2.cvtColor(original, cv2.COLOR_BGR2RGB)
+        dct_encoded_img = cv2.cvtColor(dctEncoded, cv2.COLOR_BGR2RGB)
+        MSE = Compare().MSE(original, dct_encoded_img)
+        print(f"Nilai MSE :  {MSE} ")
     
-#         PSNR = Compare().PSNR(original, dct_encoded_img)
-#         print(f"Nilai PSNR : {PSNR} ")
+        PSNR = Compare().PSNR(original, dct_encoded_img)
+        print(f"Nilai PSNR : {PSNR} ")
      
-#         print("Berhasil")
+        print("Berhasil")
      
 
-#     if m == "2":
+    if m == "2":
    
-#         STEGANO_PATH = input("Masukkan Gambar (Ex : hasil.png) : ")
-#         hasil_decode =  DCT().decoding(STEGANO_PATH)
-#         ciphertext = hasil_decode
-#         kunci_dekrip = input('Masukkan Kunci : ')
-#         pesan = AESCipher(kunci_dekrip).decrypt(ciphertext).decode('utf-8')
-#         print('Pesan : ', pesan)
+        STEGANO_PATH = input("Masukkan Gambar (Ex : hasil.png) : ")
+        hasil_decode =  DCT().decoding(STEGANO_PATH)
+        ciphertext = hasil_decode
+        kunci_dekrip = input('Masukkan Kunci : ')
+        pesan = AESCipher(kunci_dekrip).decrypt(ciphertext).decode('utf-8')
+        print('Pesan : ', pesan)
 
-#         hash_pesan = hashlib.sha256(pesan.encode())
-#         print("Hasil Hash Pesan : ",hash_pesan.hexdigest())
+        hash_pesan = hashlib.sha256(pesan.encode())
+        print("Hasil Hash Pesan : ",hash_pesan.hexdigest())
 
-#         print("Berhasil")
+        print("Berhasil")
    
 
-#     else:
-#         print("Keluar Program\n")
-#         break
+    else:
+        print("Keluar Program\n")
+        break
